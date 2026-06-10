@@ -10,21 +10,28 @@ var rol = document.getElementById("rol");
 var genero = document.getElementById("genero");
 var profesion = document.getElementById("profesion");
 var Calificacion_estaurante = document.getElementById("Calificacion_estaurante");
-
-function ValidarDatos() {
-    if (nombre_completo=="" || telefono== "" || direccion== "" || email== "" || contraseña== "" || fecha_nacimiento == "" || documento_identidad == "" || estado_civil== "" || rol== "" || genero== "" || profesion== "" || Calificacion_estaurante== "") {
-        console.log("Por favor, complete todos los campos.");
-    } 
-    else {
-           if(nombre_completo != /[a-zA-Z]/){
-            console.log("los datos son incorrectos.");
-         }
-        
-    if (telefono.value.length () >8) {
-        console.log("los datos son incorrectos.");
-        }
-    if (email.!= /[@]/) {
-        console.log("los datos son incorrectos.");
-        }
+function ValidarDatos(){
     
+}
+if (nombre_completo == '' && usurario == '' && estado_civil == '' && profesion == '' && fecha_nacimiento == '' && documento_identidad == '' && direccion == '' && rol == '' && telefono == '' && email ==''){
+    console.log("los campos estan vacios")
+
+}
+else {
+    if(nombre_completo != /[a-zA-Z]/){
+       console.log('los datos son incorrectos')        
+}
+
+
+   if (telefono.lenght() > 10){
+       console.log("los datos son incorrectos")
+   }
+   
+   if (correo_electronico !=/(@)/){
+       console.log("los datos son incorrectos")
+   }
+
+     if(documento_identidad == /[a-zA-Z]/){
+        console.log('los datos son incorrectos')
+     }
 }
