@@ -1,37 +1,80 @@
-var nombre_completo = document.getElementById("nombre_completo");
-var telefono = document.getElementById("direccion");
+var nombre = document.getElementById("nombre").value;
+
+
 var direccion = document.getElementById("direccion");
-var email = document.getElementById("email");
+
+var correo = document.getElementById("correo");
 var contraseña = document.getElementById("contraseña");
-var fecha_nacimiento = document.getElementById("fecha_nacimiento");
-var documento_identidad = document.getElementById("documento_identidad");
-var estado_civil = document.getElementById("estado_civil");
-var rol = document.getElementById("rol");
-var genero = document.getElementById("genero");
+var nacimiento = document.getElementById("birthday");
+var documento = document.getElementById("documento");
 var profesion = document.getElementById("profesion");
-var Calificacion_estaurante = document.getElementById("Calificacion_estaurante");
-function ValidarDatos(){
-    
-}
-if (nombre_completo == '' && usurario == '' && estado_civil == '' && profesion == '' && fecha_nacimiento == '' && documento_identidad == '' && direccion == '' && rol == '' && telefono == '' && email ==''){
-    console.log("los campos estan vacios")
 
-}
-else {
-    if(nombre_completo != /[a-zA-Z]/){
-       console.log('los datos son incorrectos')        
-}
+function ValidarDatos() {
+  if (nombre.value != "" && direccion.value != "" && correo.value != "" && contraseña.value != "" && nacimiento.value != "" && documento.value != "" && profesion.value != "") {
+
+    if (/\d/.test(nombre.value)) {
+      Swal.fire({
+        icon: "error",
+        title: "Algo Salio Mal...",
+        text: "El campo nombre no debe contener números.",
+
+      });
+    }
+
+    if (correo.value.indexOf("@") === -1) {
+      Swal.fire({
+        icon: "error",
+        title: "Algo Salio Mal...",
+        text: "El campo correo debe contener @.",
+
+      });
+    }
+
+    if (contraseña.value.length < 8) {
+      Swal.fire({
+        icon: "error",
+        title: "Algo Salio Mal...",
+        text: "El campo contraseña debe tener al menos 8 caracteres.",
+
+      });
+    }
+
+    if (!/^\d+$/.test(documento.value)) {
+      Swal.fire({
+        icon: "error",
+        title: "Algo Salio Mal...",
+        text: "El campo documento debe contener solo números.",
+
+      });
+    }
+    console.log("nombre: " + nombre.value);
+    console.log("direccion: " + direccion.value);
+    console.log("correo: " + correo.value);
+    console.log("contraseña: " + contraseña.value);
+    console.log("nacimiento: " + nacimiento.value);
+    console.log("documento: " + documento.value);
+    console.log("profesion: " + profesion.value);
 
 
-   if (telefono.lenght() > 10){
-       console.log("los datos son incorrectos")
-   }
-   
-   if (correo_electronico !=/(@)/){
-       console.log("los datos son incorrectos")
-   }
 
-     if(documento_identidad == /[a-zA-Z]/){
-        console.log('los datos son incorrectos')
-     }
+
+    Swal.fire({
+      icon: "success",
+      title: "Datos Validados",
+      text: "Los datos del usuario han sido validados correctamente.",
+
+    });
+    return;
+
+
+
+  } else {
+    Swal.fire({
+      title: "Algo Salio Mal...",
+      text: "Por favor, complete todos los campos.",
+      icon: "error"
+    });
+  }
 }
+
+document.getElementById("btnenviar").onclick = ValidarDatos;
